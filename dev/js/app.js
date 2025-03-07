@@ -52,14 +52,14 @@ function getCookie() {
 
 barba.init({
 	transitions: [
-		{
-			name: "default-transition",
-			beforeEnter: () => {
-				gsap.set(".loading", {
-					autoAlpha: 0,
-				});
-			},
-		},
+		// {
+		// 	name: "default-transition",
+		// 	beforeEnter: () => {
+		// 		gsap.set(".loading", {
+		// 			autoAlpha: 0,
+		// 		});
+		// 	},
+		// },
 		{
 			name: "list-transtition",
 			sync: false,
@@ -73,47 +73,47 @@ barba.init({
 			to: {
 				namespace: "home",
 			},
-			once: async (data) => {
-				if (getCookie() == "false") {
-					gsap.set(".loading", {
-						autoAlpha: 0,
-					});
-					return;
-				}
-				const tl = gsap.timeline();
-				const words = gsap.utils.toArray(".loading__word");
-				lenis.scrollTo(0, { immediate: true });
-				lenis.stop();
-				homeAnim.resetIntro();
-				for (const word of words) {
-					tl.add(
-						gsap.from(word, 1, {
-							yPercent: 100,
-							duration: 0.5,
-							ease: "power2.out",
-						}),
-						"-=1"
-					);
-					tl.add(
-						gsap.to(word, {
-							autoAlpha: 0,
-							duration: 1.5,
-						})
-					);
-				}
-				tl.add(
-					gsap.to(".loading", {
-						autoAlpha: 0,
-						duration: 0.5,
-						onComplete: async () => {
-							await homeAnim.introAnim();
-							lenis.start();
-							data.current.isOnce = true;
-							setCookie();
-						},
-					})
-				);
-			},
+			// once: async (data) => {
+			// 	if (getCookie() == "false") {
+			// 		gsap.set(".loading", {
+			// 			autoAlpha: 0,
+			// 		});
+			// 		return;
+			// 	}
+			// 	const tl = gsap.timeline();
+			// 	const words = gsap.utils.toArray(".loading__word");
+			// 	lenis.scrollTo(0, { immediate: true });
+			// 	lenis.stop();
+			// 	homeAnim.resetIntro();
+			// 	for (const word of words) {
+			// 		tl.add(
+			// 			gsap.from(word, 1, {
+			// 				yPercent: 100,
+			// 				duration: 0.5,
+			// 				ease: "power2.out",
+			// 			}),
+			// 			"-=1"
+			// 		);
+			// 		tl.add(
+			// 			gsap.to(word, {
+			// 				autoAlpha: 0,
+			// 				duration: 1.5,
+			// 			})
+			// 		);
+			// 	}
+			// 	tl.add(
+			// 		gsap.to(".loading", {
+			// 			autoAlpha: 0,
+			// 			duration: 0.5,
+			// 			onComplete: async () => {
+			// 				await homeAnim.introAnim();
+			// 				lenis.start();
+			// 				data.current.isOnce = true;
+			// 				setCookie();
+			// 			},
+			// 		})
+			// 	);
+			// },
 		},
 	],
 	views: [
@@ -121,9 +121,9 @@ barba.init({
 			namespace: "home",
 			async afterEnter(data) {
 				homeAnim.enterAnim();
-				if (data.current.isOnce) {
-					return;
-				}
+				// if (data.current.isOnce) {
+				// 	return;
+				// }
 				homeAnim.resetIntro();
 				homeAnim.introAnim();
 			},

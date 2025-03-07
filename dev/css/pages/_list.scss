@@ -1,6 +1,9 @@
 @use "../utils" as *;
 
 .works {
+	& > .ct-section-inner-wrap {
+		padding: 8em 0 24em;
+	}
 	&__wrapper {
 		& {
 			display: grid;
