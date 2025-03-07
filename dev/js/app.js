@@ -152,6 +152,13 @@ barba.init({
 				});
 			},
 			afterEnter() {
+				if (lenis) {
+					// scroll to the top using Lenis immediately (no smooth scrolling).
+					lenis.scrollTo(0, { immediate: true });
+				} else {
+					// If 'lenis' is not defined, fall back to the default browser scroll behavior.
+					window.scrollTo(0, 0);
+				}
 				enterListAnimation();
 				worksListAnimation();
 			},
@@ -159,6 +166,13 @@ barba.init({
 		{
 			namespace: "single",
 			afterEnter({ next }) {
+				if (lenis) {
+					// scroll to the top using Lenis immediately (no smooth scrolling).
+					lenis.scrollTo(0, { immediate: true });
+				} else {
+					// If 'lenis' is not defined, fall back to the default browser scroll behavior.
+					window.scrollTo(0, 0);
+				}
 				enterSingleWorAnimation(lenis);
 			},
 		},
