@@ -52,14 +52,19 @@ function getCookie() {
 
 barba.init({
 	transitions: [
-		// {
-		// 	name: "default-transition",
-		// 	beforeEnter: () => {
-		// 		gsap.set(".loading", {
-		// 			autoAlpha: 0,
-		// 		});
-		// 	},
-		// },
+		{
+			name: "default-transition",
+			beforeEnter: () => {
+				if (lenis) {
+					// scroll to the top using Lenis immediately (no smooth scrolling).
+					lenis.scrollTo(0, { immediate: true });
+					lenis.stop();
+				} else {
+					// If 'lenis' is not defined, fall back to the default browser scroll behavior.
+					window.scrollTo(0, 0);
+				}
+			},
+		},
 		{
 			name: "list-transtition",
 			sync: false,
@@ -153,16 +158,6 @@ barba.init({
 		},
 		{
 			namespace: "single",
-			beforeEnter() {
-				if (lenis) {
-					// scroll to the top using Lenis immediately (no smooth scrolling).
-					lenis.scrollTo(0, { immediate: true });
-					lenis.stop();
-				} else {
-					// If 'lenis' is not defined, fall back to the default browser scroll behavior.
-					window.scrollTo(0, 0);
-				}
-			},
 			afterEnter({ next }) {
 				enterSingleWorAnimation(lenis);
 			},
