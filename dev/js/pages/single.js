@@ -28,8 +28,7 @@ export async function enterSingleWorAnimation(lenis) {
 		.from(
 			".single-work-thumbnail img",
 			{
-				y: "100%",
-				opacity: 0,
+				autoAlpha: 0,
 				duration: 0.4,
 				ease: "power2.Out",
 			},

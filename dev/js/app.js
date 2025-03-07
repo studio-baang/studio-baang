@@ -73,15 +73,11 @@ barba.init({
 			to: {
 				namespace: "home",
 			},
-			beforeEnter: () => {
+			once: async (data) => {
 				if (getCookie() == "false") {
 					gsap.set(".loading", {
 						autoAlpha: 0,
 					});
-				}
-			},
-			once: async (data) => {
-				if (getCookie() == "false") {
 					return;
 				}
 				const tl = gsap.timeline();
