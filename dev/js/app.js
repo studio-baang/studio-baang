@@ -106,8 +106,8 @@ barba.init({
 						autoAlpha: 0,
 						duration: 0.5,
 						onComplete: async () => {
-							lenis.start();
 							await homeAnim.introAnim();
+							lenis.start();
 							data.current.isOnce = true;
 							setCookie();
 						},
