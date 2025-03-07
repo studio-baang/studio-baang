@@ -87,8 +87,8 @@ barba.init({
 				homeAnim.resetIntro();
 				for (const word of words) {
 					tl.add(
-						gsap.to(word, 1, {
-							yPercent: 0,
+						gsap.from(word, 1, {
+							yPercent: 100,
 							duration: 0.5,
 							ease: "power2.out",
 						}),
