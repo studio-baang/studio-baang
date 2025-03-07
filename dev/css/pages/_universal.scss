@@ -165,13 +165,16 @@ ul {
 		display: none;
 	}
 	&__word {
+		transform: translateY(100%);
 		&-wrapper {
 			width: auto;
 			position: absolute;
 			overflow: hidden;
 		}
 		&--strong {
-			font-size: 1.5em;
+			color: var(--main-color);
+			font-size: 1.75em;
+			font-weight: 700;
 		}
 	}
 }
