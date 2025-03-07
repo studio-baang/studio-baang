@@ -1,0 +1,48 @@
+@mixin flex($justify: normal, $align: normal, $direction: row, $gap: initial, $wrap: nowrap) {
+	display: flex;
+	@if $justify {
+		justify-content: $justify;
+	}
+	@if $align {
+		align-items: $align;
+	}
+	@if $direction {
+		flex-direction: $direction;
+	}
+	@if $gap {
+		gap: $gap;
+	}
+	@if $wrap {
+		flex-wrap: $wrap;
+	}
+}
+
+@mixin media-desktop {
+	@media screen and (min-width: 1280px) {
+		@content;
+	}
+}
+
+@mixin media-tablet-landscape {
+	@media screen and (min-width: 1028px) and (max-width: 1279px) {
+		@content;
+	}
+}
+
+@mixin media-tablet {
+	@media screen and (max-width: 782px) {
+		@content;
+	}
+}
+
+@function calc-width($col) {
+	@return 96 * $col - 16;
+}
+
+@function calc-vh($value) {
+	@return calc($value * var(--vh, 1vh));
+}
+
+@mixin title-font() {
+	font-family: "Fustat", "Pretendard", sans-serif;
+}

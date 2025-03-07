@@ -1,0 +1,7 @@
+@use "./utils" as *;
+
+@forward "./utils/reset";
+@forward "./pages/universal";
+@forward "./pages/home";
+@forward "./pages/list";
+@forward "./pages/single-work";
