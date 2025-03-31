@@ -9,6 +9,7 @@ import { calcVhValue } from "./utils/calc-vh";
 import { enterSingleWorAnimation } from "./pages/single";
 import { HomeAnim } from "./pages/home";
 import { disbleBarba } from "./utils/ignore-barba";
+import { filterResizeMobile } from "./utils/ignore-mobile-resize";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener(
 	"resize",
 	debounce(() => {
-		calcVhValue();
+		filterResizeMobile(calcVhValue);
 	}, 100)
 );
 
