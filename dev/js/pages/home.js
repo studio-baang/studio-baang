@@ -1,4 +1,6 @@
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
 
 export class HomeAnim {
 	constructor() {
@@ -58,6 +60,19 @@ export class HomeAnim {
 			item.addEventListener("mouseenter", this.handleMouseEnter);
 		});
 	};
+
+	CompetenciesItemAnimTroughScrollTrigger() {
+		gsap.to(this.competItems, {
+			scrollTrigger: {
+				trigger: this.competItems,
+				start: "top 50%",
+				end: "bottom 50%",
+			},
+			opacity: 1,
+			duration: 0.3,
+			ease: "power2.out",
+		});
+	}
 
 	projectClone() {
 		const container = document.querySelector(".home-project__item-container");

@@ -1,0 +1,22 @@
+@use "../utils" as *;
+
+.header {
+	position: fixed;
+	mix-blend-mode: exclusion;
+	z-index: 1;
+	&__wrapper {
+		@include basic-layout($max-width: true);
+		display: flex;
+		justify-content: flex-start;
+		gap: 1em;
+	}
+	.menu-item {
+		padding: 1em 0.5em;
+		&:first-child {
+			padding-left: 0;
+		}
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+}

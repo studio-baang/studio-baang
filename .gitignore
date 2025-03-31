@@ -1,2 +1,4 @@
 /.parcel-cache
 /node_modules
+dist/css/custom.css.map
+dist/js/app.js.map

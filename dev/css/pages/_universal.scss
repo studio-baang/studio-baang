@@ -4,6 +4,7 @@
 	--background-color: #290505;
 	--main-color: #e8834d;
 	--secondary-color: #c26a3e;
+	--tertiary-color: #ac0c0c;
 	--text-color: #ae8873;
 }
 
@@ -50,6 +51,9 @@ ul {
 		width: calc(100% - 12em);
 		margin: 0 auto;
 		padding: 3em 0;
+		@include media-tablet {
+			width: calc(100% - 2rem);
+		}
 	}
 	&--wide {
 		.ct-section-inner-wrap {
@@ -61,23 +65,6 @@ ul {
 .animation-wrapper {
 	overflow: hidden;
 	height: fit-content;
-}
-
-.header {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	position: fixed;
-	mix-blend-mode: exclusion;
-	z-index: 1;
-	&__wrapper {
-		display: flex;
-		justify-content: center;
-	}
-	&__link {
-		display: block;
-		padding: 1em;
-	}
 }
 
 .aside {
@@ -105,49 +92,6 @@ ul {
 		display: flex;
 		gap: 2em;
 		white-space: nowrap;
-	}
-}
-
-.footer {
-	border-top: 1px dashed var(--main-color);
-	.ct-section-inner-wrap {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		padding: 6em 0;
-		@include title-font;
-		text-transform: capitalize;
-	}
-	&__title {
-		flex: 0 0 50%;
-		font-weight: 500;
-		font-size: 7em;
-		line-height: 1.1;
-		display: flex;
-		color: var(--main-color);
-		flex-direction: column;
-	}
-	&__span {
-		display: block;
-		&:nth-child(2) {
-			text-align: right;
-		}
-	}
-	&__info {
-		flex: 0 0 16.667%;
-		flex-direction: column;
-	}
-	&__site-name {
-		font-size: 1.25em;
-		color: var(--main-color);
-		margin-bottom: 1em;
-	}
-	&__link {
-		font-size: 2.5em;
-		&-wrapper {
-			flex-direction: column;
-		}
 	}
 }
 

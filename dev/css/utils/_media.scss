@@ -1,0 +1,17 @@
+@mixin media-desktop {
+	@media screen and (min-width: 1280px) {
+		@content;
+	}
+}
+
+@mixin media-tablet-landscape {
+	@media screen and (min-width: 1028px) and (max-width: 1279px) {
+		@content;
+	}
+}
+
+@mixin media-tablet {
+	@media screen and (max-width: 768px) {
+		@content;
+	}
+}

@@ -1,0 +1,58 @@
+@use "../utils" as *;
+
+.footer {
+	border-top: 1px dashed var(--main-color);
+	.ct-section-inner-wrap {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 6em 0;
+		@include title-font;
+		text-transform: capitalize;
+		@include media-tablet {
+			flex-direction: column;
+			gap: 1rem;
+		}
+	}
+	&__title {
+		flex: 0 0 50%;
+		font-weight: 500;
+		font-size: 2rem;
+		line-height: 1.1;
+		display: flex;
+		color: var(--main-color);
+		flex-direction: column;
+		@include media-tablet-landscape {
+			font-size: 4rem;
+		}
+		@include media-desktop {
+			font-size: 7rem;
+		}
+	}
+	&__span {
+		display: block;
+		&:nth-child(2) {
+			text-align: right;
+		}
+	}
+	&__info {
+		flex: 0 0 16.667%;
+		gap: 1rem;
+		flex-direction: column;
+	}
+	&__site-name {
+		font-size: 1.25em;
+		color: var(--main-color);
+		margin-bottom: 1em;
+	}
+	&__link {
+		font-size: 2em;
+		@include media-tablet {
+			font-size: 1.75rem;
+		}
+		&-wrapper {
+			flex-direction: column;
+		}
+	}
+}

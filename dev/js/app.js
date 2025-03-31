@@ -8,6 +8,7 @@ import { enterListAnimation, leaveListAnimation, worksListAnimation } from "./pa
 import { calcVhValue } from "./utils/calc-vh";
 import { enterSingleWorAnimation } from "./pages/single";
 import { HomeAnim } from "./pages/home";
+import { disbleBarba } from "./utils/ignore-barba";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,6 +24,7 @@ gsap.ticker.add((time) => {
 
 document.addEventListener("DOMContentLoaded", () => {
 	calcVhValue();
+	disbleBarba();
 });
 
 window.addEventListener(
@@ -33,22 +35,6 @@ window.addEventListener(
 );
 
 const homeAnim = new HomeAnim();
-
-function setCookie() {
-	let date = new Date();
-	date.setTime(date.getTime() + 24 * 60 * 60 * 1000); // 하루 후 만료
-	let expires = "expires=" + date.toUTCString();
-	document.cookie = `introAnim=false; ${expires}; path=/`;
-}
-
-function getCookie() {
-	let cookies = document.cookie.split("; ");
-	for (let cookie of cookies) {
-		let [key, value] = cookie.split("=");
-		if (key === "introAnim") return value;
-	}
-	return null;
-}
 
 barba.init({
 	transitions: [
@@ -78,47 +64,6 @@ barba.init({
 			to: {
 				namespace: "home",
 			},
-			// once: async (data) => {
-			// 	if (getCookie() == "false") {
-			// 		gsap.set(".loading", {
-			// 			autoAlpha: 0,
-			// 		});
-			// 		return;
-			// 	}
-			// 	const tl = gsap.timeline();
-			// 	const words = gsap.utils.toArray(".loading__word");
-			// 	lenis.scrollTo(0, { immediate: true });
-			// 	lenis.stop();
-			// 	homeAnim.resetIntro();
-			// 	for (const word of words) {
-			// 		tl.add(
-			// 			gsap.from(word, 1, {
-			// 				yPercent: 100,
-			// 				duration: 0.5,
-			// 				ease: "power2.out",
-			// 			}),
-			// 			"-=1"
-			// 		);
-			// 		tl.add(
-			// 			gsap.to(word, {
-			// 				autoAlpha: 0,
-			// 				duration: 1.5,
-			// 			})
-			// 		);
-			// 	}
-			// 	tl.add(
-			// 		gsap.to(".loading", {
-			// 			autoAlpha: 0,
-			// 			duration: 0.5,
-			// 			onComplete: async () => {
-			// 				await homeAnim.introAnim();
-			// 				lenis.start();
-			// 				data.current.isOnce = true;
-			// 				setCookie();
-			// 			},
-			// 		})
-			// 	);
-			// },
 		},
 	],
 	views: [
