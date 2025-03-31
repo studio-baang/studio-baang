@@ -26,6 +26,9 @@
 @mixin basic-layout($padding: false, $max-width: false) {
 	width: calc(100% - 8em);
 	margin: 0 auto;
+	@media screen and (max-width: 768px) {
+		width: calc(100% - 2em);
+	}
 	@if $padding {
 		padding: 192px 0;
 	}

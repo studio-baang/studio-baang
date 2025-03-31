@@ -9,8 +9,7 @@
 	& > .ct-section-inner-wrap {
 		display: flex;
 		flex-direction: column;
-		max-width: initial;
-		width: clamp(80%, 1540px, 96%);
+		max-width: 1540px;
 		margin: 0 auto;
 		padding: 0;
 	}
@@ -34,13 +33,17 @@
 		&__column {
 			width: 100%;
 			display: flex;
+			flex-direction: column;
 			justify-content: space-between;
-			gap: 1.5em;
+			gap: 0.5em;
+			@include media-desktop {
+				gap: 1.5em;
+			}
 			&--bottom {
 				align-items: flex-end;
 			}
-			@include media-tablet() {
-				flex-direction: column;
+			@include media-desktop() {
+				flex-direction: row;
 				&--bottom {
 					align-items: initial;
 				}
@@ -51,7 +54,7 @@
 		flex: 0 0 50%;
 		font-family: "Fustat", "Pretendard", sans-serif;
 		font-weight: 500;
-		font-size: min(96px, 10vw);
+		font-size: min(96px, 7vw);
 		line-height: 1.1;
 		text-transform: capitalize;
 		color: var(--main-color);
@@ -66,7 +69,7 @@
 		flex-shrink: 0;
 		font-family: "Fustat", "Pretendard", sans-serif;
 		font-weight: 400;
-		font-size: min(72px, 5vw);
+		font-size: min(72px, 4vw);
 		line-height: 1.1;
 		text-transform: capitalize;
 		color: var(--tertiary-color);
@@ -77,9 +80,18 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1.5em;
+		align-content: flex-end;
+		margin-bottom: 2rem;
+		@include media-desktop {
+			margin-bottom: 0;
+		}
 		&__item {
+			font-size: 0.8rem;
 			flex: 0 0 min(144px, 25%);
 			overflow: hidden;
+			@include media-desktop {
+				font-size: 1rem;
+			}
 			&-wrapper {
 				flex-direction: column;
 				height: 100%;
@@ -113,7 +125,7 @@
 		align-items: center;
 		overflow: hidden;
 		@include media-tablet() {
-			width: 75%;
+			width: 100%;
 		}
 	}
 	&-content {
@@ -134,6 +146,9 @@
 			line-height: 1.5;
 			@include media-tablet {
 				width: 100%;
+				.ct-text-block {
+					margin: 2rem 0;
+				}
 			}
 			&--center {
 				align-self: center;
