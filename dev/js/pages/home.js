@@ -47,7 +47,6 @@ export class HomeAnim {
 					trigger: ".sticky-effect",
 					start: `${startPoint}% 10%`,
 					end: `${endPoint}% 90%`,
-					markers: true,
 					scrub: 0.2,
 				},
 			});
