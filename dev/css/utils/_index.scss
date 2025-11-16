@@ -40,7 +40,3 @@
 @function calc-width($col) {
 	@return 96 * $col - 16;
 }
-
-@function calc-vh($value) {
-	@return calc($value * var(--vh, 1vh));
-}

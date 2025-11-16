@@ -4,13 +4,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 export class HomeAnim {
 	constructor() {
-		this.competItems = document.querySelectorAll(".home-competencies__item");
+		this.competItems = gsap.utils.toArray(".home-competencies__item");
 		this.handleMouseEnter = null;
 	}
 
 	async enterAnim() {
-		this.toggleCompetenciesItem();
 		this.projectClone();
+		this.CompetenciesItemAnimTroughScrollTrigger();
 	}
 
 	async resetIntro() {
@@ -62,15 +62,23 @@ export class HomeAnim {
 	};
 
 	CompetenciesItemAnimTroughScrollTrigger() {
-		gsap.to(this.competItems, {
-			scrollTrigger: {
-				trigger: this.competItems,
-				start: "top 50%",
-				end: "bottom 50%",
-			},
-			opacity: 1,
-			duration: 0.3,
-			ease: "power2.out",
+		let triggers = ScrollTrigger.getAll();
+		triggers.forEach(function (trigger) {
+			trigger.kill();
+		});
+		this.competItems.forEach((compet, i) => {
+			const startPoint = Math.abs((i / (this.competItems.length + 1)) * 100);
+			const endPoint = Math.abs(((i + 1) / (this.competItems.length + 1)) * 100);
+			gsap.to(compet, {
+				scrollTrigger: {
+					trigger: ".sticky-effect",
+					start: `${startPoint}% 10%`,
+					end: `${endPoint}% 90%`,
+					scrub: 0.2,
+				},
+				opacity: 1,
+				ease: "none",
+			});
 		});
 	}
 
