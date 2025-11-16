@@ -70,6 +70,12 @@ barba.init({
 	views: [
 		{
 			namespace: "home",
+			afterLeave() {
+				let triggers = ScrollTrigger.getAll();
+				triggers.forEach(function (trigger) {
+					trigger.kill();
+				});
+			},
 			async afterEnter(data) {
 				homeAnim.enterAnim();
 				// if (data.current.isOnce) {
@@ -77,6 +83,7 @@ barba.init({
 				// }
 				homeAnim.resetIntro();
 				homeAnim.introAnim();
+				homeAnim.addScrollAnim();
 			},
 			beforeEnter() {
 				if (lenis) {
@@ -86,7 +93,6 @@ barba.init({
 					// If 'lenis' is not defined, fall back to the default browser scroll behavior.
 					window.scrollTo(0, 0);
 				}
-				homeAnim.resetEventListener();
 			},
 		},
 		{

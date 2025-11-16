@@ -3,14 +3,10 @@ import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
 export class HomeAnim {
-	constructor() {
-		this.competItems = gsap.utils.toArray(".home-competencies__item");
-		this.handleMouseEnter = null;
-	}
+	constructor() {}
 
 	async enterAnim() {
 		this.projectClone();
-		this.CompetenciesItemAnimTroughScrollTrigger();
 	}
 
 	async resetIntro() {
@@ -41,41 +37,21 @@ export class HomeAnim {
 			});
 	}
 
-	handleMouseEnterFunc = (event) => {
-		const items = this.competItems;
-
-		gsap.to(items, { opacity: 0.4, duration: 0.3, ease: "power2.out" });
-		gsap.to(event.currentTarget, { opacity: 1, duration: 0.3, ease: "power2.out" });
-	};
-
-	handleMouseLeaveFunc = () => {
-		const items = this.competItems;
-		gsap.to(items, { opacity: 1, duration: 0.3, ease: "power2.out" });
-	};
-
-	toggleCompetenciesItem = () => {
-		const items = this.competItems;
-		this.handleMouseEnter = this.handleMouseEnterFunc.bind(this);
-		items.forEach((item) => {
-			item.addEventListener("mouseenter", this.handleMouseEnter);
-		});
-	};
-
-	CompetenciesItemAnimTroughScrollTrigger() {
-		let triggers = ScrollTrigger.getAll();
-		triggers.forEach(function (trigger) {
-			trigger.kill();
-		});
-		this.competItems.forEach((compet, i) => {
-			const startPoint = Math.abs((i / (this.competItems.length + 1)) * 100);
-			const endPoint = Math.abs(((i + 1) / (this.competItems.length + 1)) * 100);
-			gsap.to(compet, {
+	addScrollAnim() {
+		const competItems = gsap.utils.toArray(".home-competencies__item");
+		competItems.forEach((compet, i) => {
+			const startPoint = Math.abs((i / (competItems.length + 1)) * 100);
+			const endPoint = Math.abs(((i + 1) / (competItems.length + 1)) * 100);
+			const tl = gsap.timeline({
 				scrollTrigger: {
 					trigger: ".sticky-effect",
 					start: `${startPoint}% 10%`,
 					end: `${endPoint}% 90%`,
+					markers: true,
 					scrub: 0.2,
 				},
+			});
+			tl.to(compet, {
 				opacity: 1,
 				ease: "none",
 			});
@@ -85,13 +61,5 @@ export class HomeAnim {
 	projectClone() {
 		const container = document.querySelector(".home-project__item-container");
 		container.after(container.cloneNode(true));
-	}
-
-	resetEventListener() {
-		const items = this.competItems;
-		items.forEach((item) => {
-			item.removeEventListener("mouseenter", this.handleMouseEnter);
-		});
-		this.competItems = document.querySelectorAll(".home-competencies__item");
 	}
 }
