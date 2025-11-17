@@ -99,6 +99,7 @@
 			font-weight: 500;
 			color: var(--main-color);
 			font-size: 4rem;
+			line-height: 1;
 			@include media-desktop {
 				font-size: 6rem;
 			}
